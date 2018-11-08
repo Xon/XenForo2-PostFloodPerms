@@ -1,0 +1,6 @@
+{
+    "permission_type": "integer",
+    "interface_group_id": "sv_ForumRateLimiting",
+    "display_order": 221,
+    "depend_permission_id": "sv_postflood_node_on"
+}

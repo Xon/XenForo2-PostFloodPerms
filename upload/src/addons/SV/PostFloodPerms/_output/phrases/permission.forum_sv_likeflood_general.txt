@@ -1,1 +1,1 @@
-Like - General Rate Limit
+Like/React - General Rate Limit

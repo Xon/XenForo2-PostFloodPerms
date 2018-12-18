@@ -1,14 +1,16 @@
 {
     "legacy_addon_id": "SV_PostFloodTweaks",
     "title": "Post flood permissions",
-    "description": "",
-    "version_id": 2000000,
-    "version_string": "2.0.0",
-    "dev": "",
+    "description": "Provides per thread/node user group permissions for post rate limiting",
+    "version_id": 2000100,
+    "version_string": "2.0.1",
+    "dev": "Xon",
     "dev_url": "",
     "faq_url": "",
     "support_url": "https://xenforo.com/community/resources/post-flood-permissions.6800/",
     "extra_urls": [],
-    "require": [],
+    "require": {
+        "php": ["5.6.0","PHP 5.6.0+"]
+    },
     "icon": ""
 }

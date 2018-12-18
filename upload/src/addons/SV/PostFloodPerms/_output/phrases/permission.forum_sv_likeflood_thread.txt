@@ -1,1 +1,1 @@
-Like - Per Thread Rate Limit
+Like/React - Per Thread Rate Limit

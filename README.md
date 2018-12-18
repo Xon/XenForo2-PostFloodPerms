@@ -7,11 +7,11 @@ Provides user group permissions for the following post rate limiting options:
 - Post Reply - Enable Per node rate limiting
 - Post Reply - Per node post rate limiting - delay between posts in seconds
 - Post Reply - General rate limiting - delay between posts in seconds
-- Like - Enable Per thread rate limiting
-- Like - Per thread rate limiting - delay between posts in seconds
-- Like - Enable Per node rate limiting
-- Like - Per node post rate limiting - delay between posts in seconds
-- Like - General rate limiting - delay between posts in seconds
+- Like/React - Enable Per thread rate limiting
+- Like/React - Per thread rate limiting - delay between posts in seconds
+- Like/React - Enable Per node rate limiting
+- Like/React - Per node post rate limiting - delay between posts in seconds
+- Like/React - General rate limiting - delay between posts in seconds
 - Delete - Enable Per thread rate limiting
 - Delete - Per thread rate limiting - delay between deleting posts in seconds
 - Delete - Enable Per node rate limiting

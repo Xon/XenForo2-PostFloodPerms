@@ -18,6 +18,11 @@ class Post extends XFCP_Post
      */
     public function actionLike(ParameterBag $params)
     {
+        if (\XF::$versionId < 2010000)
+        {
+            return $this->notFound();
+        }
+
         if ($this->isPost())
         {
             /** @noinspection PhpUndefinedFieldInspection */
@@ -43,8 +48,13 @@ class Post extends XFCP_Post
      * @return \XF\Mvc\Reply\Message|\XF\Mvc\Reply\View
      * @throws \XF\Mvc\Reply\Exception
      */
-    public function actionReactions(ParameterBag $params)
+    public function actionReact(ParameterBag $params)
     {
+        if (\XF::$versionId > 2010000)
+        {
+            return $this->notFound();
+        }
+
         if ($this->isPost())
         {
             /** @noinspection PhpUndefinedFieldInspection */
@@ -58,7 +68,7 @@ class Post extends XFCP_Post
             $floodCheck->assertNotFlooding($post->Thread,'like', 'dlt', 'ln', 'like');
         }
 
-        return parent::actionReactions($params);
+        return parent::actionReact($params);
     }
 
     public function actionDelete(ParameterBag $params)

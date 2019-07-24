@@ -18,7 +18,7 @@ class Post extends XFCP_Post
      */
     public function actionLike(ParameterBag $params)
     {
-        if (\XF::$versionId < 2010000)
+        if (\XF::$versionId > 2010000)
         {
             return $this->notFound();
         }
@@ -50,7 +50,7 @@ class Post extends XFCP_Post
      */
     public function actionReact(ParameterBag $params)
     {
-        if (\XF::$versionId > 2010000)
+        if (\XF::$versionId < 2010000)
         {
             return $this->notFound();
         }

@@ -2,5 +2,5 @@
     "permission_type": "flag",
     "interface_group_id": "sv_ForumRateLimiting",
     "display_order": 120,
-    "depend_permission_id": "like"
+    "depend_permission_id": "react"
 }

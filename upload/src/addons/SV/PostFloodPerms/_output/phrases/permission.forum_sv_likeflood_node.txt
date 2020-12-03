@@ -1,1 +1,1 @@
-Like/React - Per Node Rate Limit
+React - Per Node Rate Limit

@@ -12,9 +12,9 @@ use XF\Mvc\ParameterBag;
 class Conversation extends XFCP_Conversation
 {
     /** @var \XF\Entity\ConversationMaster */
-    protected $svFloodConversation;
+    protected $svFloodConversation = null;
     /** @var bool */
-    protected $svDoFloodCheck;
+    protected $svDoFloodCheck = false;
 
     public function actionMessagesReact(ParameterBag $params)
     {

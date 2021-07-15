@@ -19,7 +19,7 @@ class Forum extends XFCP_Forum
      * @param ParameterBag $params
      * @return \XF\Mvc\Reply\AbstractReply
      */
-    public function actionAddReply(ParameterBag $params)
+    public function actionPostThread(ParameterBag $params)
     {
         $nodeId = $params->node_id ?? 0;
         $nodeName = $params->node_name ?? '';

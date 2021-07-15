@@ -1,6 +1,6 @@
 {
     "legacy_addon_id": "SV_PostFloodTweaks",
-    "title": "Post flood permissions",
+    "title": "Flood permissions",
     "description": "Provides per thread/node user group permissions for post rate limiting",
     "version_id": 2020000,
     "version_string": "2.2.0",
@@ -13,5 +13,5 @@
         "XF": [2010070, "XenForo 2.1.0+"],
         "php": ["7.0.0", "PHP 7.0.0+"]
     },
-    "icon": ""
+    "icon": "far fa-tachometer-alt-slowest"
 }

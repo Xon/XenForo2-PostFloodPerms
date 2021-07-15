@@ -3,16 +3,22 @@
 Provides user group permissions for the following post rate limiting options:
 
 Thread/Post Permissions;
+- New Thread - Enable Per node rate limiting
+- New Thread - Per node post rate limiting - delay between new threads in seconds
+- New Thread - General rate limiting - delay between new threads in seconds
+
 - Post Reply - Enable Per thread rate limiting
 - Post Reply - Per thread rate limiting - delay between posts in seconds
 - Post Reply - Enable Per node rate limiting
 - Post Reply - Per node post rate limiting - delay between posts in seconds
 - Post Reply - General rate limiting - delay between posts in seconds
+
 - React - Enable Per thread rate limiting
 - React - Per thread rate limiting - delay between reacts in seconds
 - React - Enable Per node rate limiting
 - React - Per node post rate limiting - delay between reacts in seconds
 - React - General rate limiting - delay between posts in seconds
+
 - Delete - Enable Per thread rate limiting
 - Delete - Per thread rate limiting - delay between deleting posts in seconds
 - Delete - Enable Per node rate limiting
@@ -22,7 +28,8 @@ Thread/Post Permissions;
 Conversation Permissions;
 - Post Reply - Enable Per conversation rate limiting
 - Post Reply - Per conversation rate limiting - delay between conversation messages in seconds
-- Post Reply - General rate limiting - delay between conversation messages in seconds
+- Post Reply - General rate limiting - delay between conversation messages (including new conversations!) in seconds
+
 - React - Per conversation rate limiting - delay between reacts in seconds
 - React - Enable Per conversation rate limiting
 - React - General rate limiting - delay between reacts in seconds

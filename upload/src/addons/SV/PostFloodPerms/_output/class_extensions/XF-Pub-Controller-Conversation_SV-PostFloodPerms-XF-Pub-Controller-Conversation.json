@@ -1,6 +1,6 @@
 {
     "from_class": "XF\\Pub\\Controller\\Conversation",
     "to_class": "SV\\PostFloodPerms\\XF\\Pub\\Controller\\Conversation",
-    "execute_order": 6800,
+    "execute_order": 6000,
     "active": true
 }

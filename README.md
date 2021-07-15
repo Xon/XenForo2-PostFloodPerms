@@ -36,10 +36,11 @@ This is due to how XenForo permissions inherited with numeric.
 
 The per thread/node option allows decoupling of the global flood limiter from posting in different sections.
 
-Matching order:
+Matching order, **the first match wins**:
 - Per thread rate limiting.
 - Per node rate limiting.
 - General post rate limiting.
-- XF Global post rate limiting (reports/posts/profile posts/etc).
+
+The XF global flood check ("Minimum time between messages") is skipped if any of the above matches are configured.
 
 No extra queries required.

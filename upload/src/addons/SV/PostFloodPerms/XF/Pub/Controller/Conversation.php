@@ -28,9 +28,9 @@ class Conversation extends XFCP_Conversation
             }
             /** @var \SV\PostFloodPerms\ControllerPlugin\FloodCheck $floodCheck */
             $floodCheck = $this->plugin('SV\PostFloodPerms:FloodCheck');
-            $floodCheck->assertNotFlooding('conversation', 'React',
-                'cr', $message->conversation_id,
-                'conversation_react'
+            $floodCheck->assertNotFlooding('conversation',
+                'React', 'conversation_react',
+                'cr', $message->conversation_id
             );
         }
 
@@ -72,14 +72,19 @@ class Conversation extends XFCP_Conversation
 
     public function assertNotFlooding($action, $floodingLimit = null)
     {
-        if ($action === 'post' && $this->svDoFloodCheck)
+        if ($this->svDoFloodCheck && ($action === 'conversation' || $action === 'conversation_message'))
         {
             /** @var \SV\PostFloodPerms\ControllerPlugin\FloodCheck $floodCheck */
             $floodCheck = $this->plugin('SV\PostFloodPerms:FloodCheck');
-            $floodCheck->assertNotFlooding('conversation', 'Post',
-                't', $this->svFloodConversation->conversation_id ?? 0,
-                'conversation_post'
+            $floodChecked = $floodCheck->assertNotFlooding('conversation',
+                'Post', 'conversation_post',
+                't', $this->svFloodConversation->conversation_id ?? 0
             );
+
+            if ($floodChecked)
+            {
+                return;
+            }
         }
 
         parent::assertNotFlooding($action, $floodingLimit);

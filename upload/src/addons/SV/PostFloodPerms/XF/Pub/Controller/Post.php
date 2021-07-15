@@ -29,9 +29,9 @@ class Post extends XFCP_Post
             }
             /** @var \SV\PostFloodPerms\ControllerPlugin\FloodCheck $floodCheck */
             $floodCheck = $this->plugin('SV\PostFloodPerms:FloodCheck');
-            $floodCheck->assertNotFlooding('forum', 'React',
+            $floodCheck->assertNotFlooding('forum',
+                'React', 'thread_react',
                 'tr', $post->thread_id,
-                'thread_react',
                 'nr', $post->Thread->node_id
             );
         }
@@ -57,9 +57,9 @@ class Post extends XFCP_Post
             }
             /** @var \SV\PostFloodPerms\ControllerPlugin\FloodCheck $floodCheck */
             $floodCheck = $this->plugin('SV\PostFloodPerms:FloodCheck');
-            $floodCheck->assertNotFlooding('forum', 'Delete',
+            $floodCheck->assertNotFlooding('forum',
+                'Delete', 'thread_delete',
                 'td', $post->thread_id,
-                'thread_delete',
                 'nd', $post->Thread->node_id
             );
         }

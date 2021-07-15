@@ -45,7 +45,7 @@ class Thread extends XFCP_Thread
 
     public function assertNotFlooding($action, $floodingLimit = null)
     {
-        if ($action == 'post' && $this->floodThread)
+        if ($action === 'post' && $this->floodThread)
         {
             /** @var \SV\PostFloodPerms\ControllerPlugin\FloodCheck $floodCheck */
             $floodCheck = $this->plugin('SV\PostFloodPerms:FloodCheck');

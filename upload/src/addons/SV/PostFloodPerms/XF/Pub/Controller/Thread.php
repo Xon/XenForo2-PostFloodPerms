@@ -26,30 +26,18 @@ class Thread extends XFCP_Thread
 
         $visitor = \XF::visitor();
         /** @noinspection PhpUndefinedFieldInspection */
-        $thread = $this->assertViewableThread($params->thread_id, ['Watch|' . $visitor->user_id]);
-        if (!$thread->canReply($error))
-        {
-            return $this->noPermission($error);
-        }
+        $threadId = $params->thread_id;
 
-        $visitor = \XF::visitor();
-        if (!$visitor->hasPermission('general', 'bypassFloodCheck'))
-        {
-            $this->svFloodThread = $thread;
-        }
-
+        $this->svFloodThread = $this->assertViewableThread($threadId, ['Watch|' . $visitor->user_id]);
         try
         {
-            $response = parent::actionAddReply($params);
+            return parent::actionAddReply($params);
         }
         finally
         {
             $this->svFloodThread = null;
         }
-
-        return $response;
     }
-
 
     public function assertNotFlooding($action, $floodingLimit = null)
     {
@@ -57,7 +45,11 @@ class Thread extends XFCP_Thread
         {
             /** @var \SV\PostFloodPerms\ControllerPlugin\FloodCheck $floodCheck */
             $floodCheck = $this->plugin('SV\PostFloodPerms:FloodCheck');
-            $floodCheck->assertNotFlooding($this->svFloodThread,'post', 't', 'n', 'post_');
+            $floodCheck->assertNotFlooding('forum', 'Post',
+                't', $this->svFloodThread->thread_id,
+                'thread_post',
+                'n', $this->svFloodThread->node_id
+            );
         }
         parent::assertNotFlooding($action, $floodingLimit);
     }

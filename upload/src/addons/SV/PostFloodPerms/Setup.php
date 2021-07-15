@@ -45,11 +45,6 @@ class Setup extends AbstractSetup
 
     public function upgrade2020000Step2()
     {
-        $this->renamePermission('forum','svFlood-DeleteContainerOn', 'forum','svFloodDeleteContainerOn');
-        $this->renamePermission('forum','svFlood-DeleteItemOn', 'forum','svFloodDeleteItemOn');
-        $this->renamePermission('forum','svFlood-ReactContainerOn', 'forum','svFloodReactContainerOn');
-        $this->renamePermission('forum','svFlood-ReactItemOn', 'forum','svFloodReactItemOn');
-        $this->renamePermission('forum','svFlood-PostContainerOn', 'forum','svFloodPostContainerOn');
-        $this->renamePermission('forum','svFlood-PostItemOn', 'forum','svFloodPostItemOn');
+        $this->applyGlobalPermissionInt('conversation','svFloodReactGeneral', 1);
     }
 }

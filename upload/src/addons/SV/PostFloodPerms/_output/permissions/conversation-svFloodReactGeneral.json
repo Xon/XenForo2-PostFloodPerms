@@ -1,0 +1,6 @@
+{
+    "permission_type": "integer",
+    "interface_group_id": "svConversationRateLimiting",
+    "display_order": 10,
+    "depend_permission_id": "react"
+}

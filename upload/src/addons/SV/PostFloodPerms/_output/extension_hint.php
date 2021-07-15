@@ -5,6 +5,7 @@
 
 namespace SV\PostFloodPerms\XF\Pub\Controller
 {
+	class XFCP_Conversation extends \XF\Pub\Controller\Conversation {}
 	class XFCP_Post extends \XF\Pub\Controller\Post {}
 	class XFCP_Thread extends \XF\Pub\Controller\Thread {}
 }

@@ -7,16 +7,16 @@ use XF\ControllerPlugin\AbstractPlugin;
 class FloodCheck extends AbstractPlugin
 {
     /**
-     * @param string $permGroup
-     * @param int    $itemId
-     * @param int    $containerId
-     * @param string $type
-     * @param string $prefixItem
-     * @param string $prefixContainer
-     * @param string $prefixGeneral
+     * @param string      $permGroup
+     * @param string      $type
+     * @param string      $prefixItem
+     * @param int         $itemId
+     * @param string|null $prefixGeneral
+     * @param string|null $prefixContainer
+     * @param int|null    $containerId
      * @throws \XF\Mvc\Reply\Exception
      */
-    public function assertNotFlooding(string $permGroup, int $itemId, int $containerId, string $type, string $prefixItem, string $prefixContainer, string $prefixGeneral)
+    public function assertNotFlooding(string $permGroup, string $type, string $prefixItem, int $itemId, string $prefixGeneral = null, string $prefixContainer = null, int $containerId = null)
     {
         $controller = $this->controller;
         if (!($controller instanceof \XF\Pub\Controller\AbstractController))
@@ -25,6 +25,11 @@ class FloodCheck extends AbstractPlugin
         }
 
         $visitor = \XF::visitor();
+
+        if ($visitor->hasPermission('general', 'bypassFloodCheck'))
+        {
+            return;
+        }
 
         if ($itemId && $visitor->hasPermission($permGroup, 'svFlood' . $type . 'ItemOn'))
         {
@@ -41,7 +46,7 @@ class FloodCheck extends AbstractPlugin
             }
         }
 
-        if ($containerId && $visitor->hasPermission($permGroup, 'svFlood' . $type . 'ContainerOn'))
+        if ($containerId && \strlen($prefixContainer) && $visitor->hasPermission($permGroup, 'svFlood' . $type . 'ContainerOn'))
         {
             $rateLimit = $visitor->hasPermission($permGroup, 'svFlood' . $type . 'Container');
             if ($rateLimit < 0)
@@ -56,17 +61,20 @@ class FloodCheck extends AbstractPlugin
             }
         }
 
-        $rateLimit = $visitor->hasPermission($permGroup, 'svFlood' . $type . 'General');
-        if ($rateLimit < 0)
+        if (\strlen($prefixGeneral))
         {
-            return;
-        }
-        else if ($rateLimit > 0)
-        {
-            // do not user the $action, as that is shared with other stuff (ie reporting)
-            $controller->assertNotFlooding($prefixGeneral, $rateLimit);
+            $rateLimit = $visitor->hasPermission($permGroup, 'svFlood' . $type . 'General');
+            if ($rateLimit < 0)
+            {
+                return;
+            }
+            else if ($rateLimit > 0)
+            {
+                // do not user the $action, as that is shared with other stuff (ie reporting)
+                $controller->assertNotFlooding($prefixGeneral, $rateLimit);
 
-            return;
+                return;
+            }
         }
     }
 }

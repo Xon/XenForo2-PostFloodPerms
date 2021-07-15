@@ -1,4 +1,7 @@
 <?php
+/**
+ * @noinspection PhpMissingReturnTypeInspection
+ */
 
 namespace SV\PostFloodPerms\XF\Pub\Controller;
 
@@ -10,8 +13,13 @@ use XF\Mvc\ParameterBag;
 class Thread extends XFCP_Thread
 {
     /** @var \XF\Entity\Thread */
-    var $floodThread  = null;
+    protected $svFloodThread = null;
 
+    /**
+     * @param ParameterBag $params
+     * @return \XF\Mvc\Reply\AbstractReply
+     * @throws \XF\Mvc\Reply\Exception
+     */
     public function actionAddReply(ParameterBag $params)
     {
         $this->assertPostOnly();
@@ -27,7 +35,7 @@ class Thread extends XFCP_Thread
         $visitor = \XF::visitor();
         if (!$visitor->hasPermission('general', 'bypassFloodCheck'))
         {
-            $this->floodThread = $thread;
+            $this->svFloodThread = $thread;
         }
 
         try
@@ -36,7 +44,7 @@ class Thread extends XFCP_Thread
         }
         finally
         {
-            $this->floodThread = null;
+            $this->svFloodThread = null;
         }
 
         return $response;
@@ -45,11 +53,11 @@ class Thread extends XFCP_Thread
 
     public function assertNotFlooding($action, $floodingLimit = null)
     {
-        if ($action === 'post' && $this->floodThread)
+        if ($action === 'post' && $this->svFloodThread !== null)
         {
             /** @var \SV\PostFloodPerms\ControllerPlugin\FloodCheck $floodCheck */
             $floodCheck = $this->plugin('SV\PostFloodPerms:FloodCheck');
-            $floodCheck->assertNotFlooding($this->floodThread,'post', 't', 'n', 'post_');
+            $floodCheck->assertNotFlooding($this->svFloodThread,'post', 't', 'n', 'post_');
         }
         parent::assertNotFlooding($action, $floodingLimit);
     }

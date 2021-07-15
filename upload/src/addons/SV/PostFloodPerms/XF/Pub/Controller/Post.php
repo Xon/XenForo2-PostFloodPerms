@@ -1,4 +1,7 @@
 <?php
+/**
+ * @noinspection PhpMissingReturnTypeInspection
+ */
 
 namespace SV\PostFloodPerms\XF\Pub\Controller;
 
@@ -11,7 +14,7 @@ class Post extends XFCP_Post
 {
     /**
      * @param ParameterBag $params
-     * @return \XF\Mvc\Reply\Message|\XF\Mvc\Reply\View
+     * @return \XF\Mvc\Reply\AbstractReply
      * @throws \XF\Mvc\Reply\Exception
      */
     public function actionReact(ParameterBag $params)
@@ -32,6 +35,11 @@ class Post extends XFCP_Post
         return parent::actionReact($params);
     }
 
+    /**
+     * @param ParameterBag $params
+     * @return \XF\Mvc\Reply\AbstractReply
+     * @throws \XF\Mvc\Reply\Exception
+     */
     public function actionDelete(ParameterBag $params)
     {
         if ($this->isPost())

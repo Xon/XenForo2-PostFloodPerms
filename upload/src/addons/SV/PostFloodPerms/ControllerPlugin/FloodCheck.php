@@ -15,7 +15,7 @@ class FloodCheck extends AbstractPlugin
      * @param string $prefixNode
      * @param string $prefixGeneral
      */
-    public function assertNotFlooding(Thread $thread, $type, $prefixThread, $prefixNode, $prefixGeneral)
+    public function assertNotFlooding(Thread $thread, string $type, string $prefixThread, string $prefixNode, string $prefixGeneral)
     {
         $controller = $this->controller;
         if (!($controller instanceof \XF\Pub\Controller\AbstractController))

@@ -3,19 +3,20 @@
 namespace SV\PostFloodPerms\ControllerPlugin;
 
 use XF\ControllerPlugin\AbstractPlugin;
-use XF\Entity\Thread;
 
 class FloodCheck extends AbstractPlugin
 {
     /**
-     * @noinspection PhpDocMissingThrowsInspection
-     * @param Thread $thread
+     * @param string $permGroup
+     * @param int    $itemId
+     * @param int    $containerId
      * @param string $type
-     * @param string $prefixThread
-     * @param string $prefixNode
+     * @param string $prefixItem
+     * @param string $prefixContainer
      * @param string $prefixGeneral
+     * @throws \XF\Mvc\Reply\Exception
      */
-    public function assertNotFlooding(Thread $thread, string $type, string $prefixThread, string $prefixNode, string $prefixGeneral)
+    public function assertNotFlooding(string $permGroup, int $itemId, int $containerId, string $type, string $prefixItem, string $prefixContainer, string $prefixGeneral)
     {
         $controller = $this->controller;
         if (!($controller instanceof \XF\Pub\Controller\AbstractController))
@@ -25,38 +26,37 @@ class FloodCheck extends AbstractPlugin
 
         $visitor = \XF::visitor();
 
-
-        if ($thread->thread_id && $visitor->hasPermission('forum', 'sv_' . $type . 'flood_thread_on'))
+        if ($itemId && $visitor->hasPermission($permGroup, 'svFlood' . $type . 'ItemOn'))
         {
-            $rateLimit = $visitor->hasPermission('forum', 'sv_' . $type . 'flood_thread');
+            $rateLimit = $visitor->hasPermission($permGroup, 'svFlood' . $type . 'Item');
             if ($rateLimit < 0)
             {
                 return;
             }
             else if ($rateLimit > 0)
             {
-                $controller->assertNotFlooding($prefixThread . $thread->thread_id, $rateLimit);
+                $controller->assertNotFlooding($prefixItem . $itemId, $rateLimit);
 
                 return;
             }
         }
 
-        if ($thread->node_id && $visitor->hasPermission('forum', 'sv_' . $type . 'flood_node_on'))
+        if ($containerId && $visitor->hasPermission($permGroup, 'svFlood' . $type . 'ContainerOn'))
         {
-            $rateLimit = $visitor->hasPermission('forum', 'sv_' . $type . 'flood_node');
+            $rateLimit = $visitor->hasPermission($permGroup, 'svFlood' . $type . 'Container');
             if ($rateLimit < 0)
             {
                 return;
             }
             else if ($rateLimit > 0)
             {
-                $controller->assertNotFlooding($prefixNode . $thread->node_id, $rateLimit);
+                $controller->assertNotFlooding($prefixContainer . $containerId, $rateLimit);
 
                 return;
             }
         }
 
-        $rateLimit = $visitor->hasPermission('forum', 'sv_' . $type . 'flood_general');
+        $rateLimit = $visitor->hasPermission($permGroup, 'svFlood' . $type . 'General');
         if ($rateLimit < 0)
         {
             return;

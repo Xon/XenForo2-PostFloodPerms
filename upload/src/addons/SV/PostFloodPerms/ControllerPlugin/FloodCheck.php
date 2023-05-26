@@ -35,7 +35,7 @@ class FloodCheck extends AbstractPlugin
             return false;
         }
 
-        if ($itemId && strlen($prefixItem) && $visitor->hasPermission($permGroup, 'svFlood' . $type . 'ItemOn'))
+        if ($itemId && strlen($prefixItem) !== 0 && $visitor->hasPermission($permGroup, 'svFlood' . $type . 'ItemOn'))
         {
             $rateLimit = (int)$visitor->hasPermission($permGroup, 'svFlood' . $type . 'Item');
             if ($rateLimit < 0)

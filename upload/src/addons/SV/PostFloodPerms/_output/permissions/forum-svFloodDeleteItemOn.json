@@ -1,6 +1,6 @@
 {
     "permission_type": "flag",
-    "interface_group_id": "sv_ForumRateLimiting",
+    "interface_group_id": "svForumRateLimiting",
     "display_order": 330,
     "depend_permission_id": "deleteOwnPost"
 }

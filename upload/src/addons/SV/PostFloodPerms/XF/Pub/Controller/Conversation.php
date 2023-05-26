@@ -78,7 +78,7 @@ class Conversation extends XFCP_Conversation
             $floodCheck = $this->plugin('SV\PostFloodPerms:FloodCheck');
             $floodChecked = $floodCheck->assertNotFlooding('conversation',
                 'Post', 'conversation_post',
-                't', $this->svFloodConversation->conversation_id ?? 0
+                'c', $this->svFloodConversation->conversation_id ?? 0
             );
 
             if ($floodChecked)

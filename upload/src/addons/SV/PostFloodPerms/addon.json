@@ -2,16 +2,16 @@
     "legacy_addon_id": "SV_PostFloodTweaks",
     "title": "Flood permissions",
     "description": "Provides per thread/node user group permissions for post rate limiting",
-    "version_id": 2020100,
-    "version_string": "2.2.1",
+    "version_id": 2030000,
+    "version_string": "2.3.0",
     "dev": "Xon",
     "dev_url": "https://atelieraphelion.com",
     "faq_url": "",
     "support_url": "https://xenforo.com/community/resources/post-flood-permissions.6800/",
     "extra_urls": [],
     "require": {
-        "XF": [2010070, "XenForo 2.1.0+"],
-        "php": ["7.0.0", "PHP 7.0.0+"]
+        "XF": [2020070, "XenForo 2.2.0+"],
+        "php": ["7.2.0", "PHP 7.2.0+"]
     },
     "icon": "far fa-tachometer-alt-slowest"
 }

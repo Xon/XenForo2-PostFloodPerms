@@ -12,7 +12,7 @@ use XF\Entity\User as UserEntity;
 /**
  * Class Setup
  *
- * @package SV\ReportImprovements
+ * @package SV\PostFloodPerms
  */
 class Setup extends AbstractSetup
 {
@@ -21,13 +21,13 @@ class Setup extends AbstractSetup
     use StepRunnerUpgradeTrait;
     use StepRunnerUninstallTrait;
 
-    public function installStep1()
+    public function installStep1(): void
     {
         $this->applyGlobalPermissionIntForGroup('forum', 'svFloodReactGeneral', 1, UserEntity::GROUP_REG);
         $this->applyGlobalPermissionIntForGroup('conversation', 'svFloodReactGeneral', 1, UserEntity::GROUP_REG);
     }
 
-    public function upgrade2020000Step1()
+    public function upgrade2020000Step1(): void
     {
         $this->renamePermission('forum', 'sv_deleteflood_general', 'forum', 'svFloodDeleteGeneral');
         $this->renamePermission('forum', 'sv_deleteflood_node', 'forum', 'svFloodDeleteContainer');
@@ -48,7 +48,7 @@ class Setup extends AbstractSetup
         $this->renamePermission('forum', 'sv_postflood_thread_on', 'forum', 'svFloodPostItemOn');
     }
 
-    public function upgrade2020000Step2()
+    public function upgrade2020000Step2(): void
     {
         $this->applyGlobalPermissionIntForGroup('conversation', 'svFloodReactGeneral', 1, UserEntity::GROUP_REG);
     }

@@ -1,11 +1,10 @@
 <?php
-/**
- * @noinspection PhpMissingReturnTypeInspection
- */
 
 namespace SV\PostFloodPerms\XF\Pub\Controller;
 
+use SV\PostFloodPerms\ControllerPlugin\FloodCheck as FloodCheckPlugin;
 use XF\Mvc\ParameterBag;
+use XF\Mvc\Reply\Exception as ReplyException;
 
 /**
  * Extends \XF\Pub\Controller\Forum
@@ -15,10 +14,6 @@ class Forum extends XFCP_Forum
     /** @var int */
     protected $svFloodCheckNodeId = 0;
 
-    /**
-     * @param ParameterBag $params
-     * @return \XF\Mvc\Reply\AbstractReply
-     */
     public function actionPostThread(ParameterBag $params)
     {
         $nodeId = $params->node_id ?? 0;
@@ -38,11 +33,17 @@ class Forum extends XFCP_Forum
         }
     }
 
+    /**
+     * @param string $action
+     * @param ?int $floodingLimit
+     * @return void
+     * @throws ReplyException
+     */
     public function assertNotFlooding($action, $floodingLimit = null)
     {
         if ($this->svFloodCheckNodeId && $action === 'thread')
         {
-            /** @var \SV\PostFloodPerms\ControllerPlugin\FloodCheck $floodCheck */
+            /** @var FloodCheckPlugin $floodCheck */
             $floodCheck = $this->plugin('SV\PostFloodPerms:FloodCheck');
             $floodChecked = $floodCheck->assertNotFlooding('forum',
                 'Thread', 'thread_new',

@@ -1,10 +1,8 @@
 <?php
-/**
- * @noinspection PhpMissingReturnTypeInspection
- */
 
 namespace SV\PostFloodPerms\XF\Pub\Controller;
 
+use SV\PostFloodPerms\ControllerPlugin\FloodCheck as FloodCheckPlugin;
 use XF\Mvc\ParameterBag;
 
 /**
@@ -12,11 +10,6 @@ use XF\Mvc\ParameterBag;
  */
 class Post extends XFCP_Post
 {
-    /**
-     * @param ParameterBag $params
-     * @return \XF\Mvc\Reply\AbstractReply
-     * @throws \XF\Mvc\Reply\Exception
-     */
     public function actionReact(ParameterBag $params)
     {
         if ($this->isPost())
@@ -27,7 +20,7 @@ class Post extends XFCP_Post
             {
                 return $this->noPermission($error);
             }
-            /** @var \SV\PostFloodPerms\ControllerPlugin\FloodCheck $floodCheck */
+            /** @var FloodCheckPlugin $floodCheck */
             $floodCheck = $this->plugin('SV\PostFloodPerms:FloodCheck');
             $floodCheck->assertNotFlooding('forum',
                 'React', 'thread_react',
@@ -39,11 +32,6 @@ class Post extends XFCP_Post
         return parent::actionReact($params);
     }
 
-    /**
-     * @param ParameterBag $params
-     * @return \XF\Mvc\Reply\AbstractReply
-     * @throws \XF\Mvc\Reply\Exception
-     */
     public function actionDelete(ParameterBag $params)
     {
         if ($this->isPost())
@@ -55,7 +43,7 @@ class Post extends XFCP_Post
             {
                 return $this->noPermission($error);
             }
-            /** @var \SV\PostFloodPerms\ControllerPlugin\FloodCheck $floodCheck */
+            /** @var FloodCheckPlugin $floodCheck */
             $floodCheck = $this->plugin('SV\PostFloodPerms:FloodCheck');
             $floodCheck->assertNotFlooding('forum',
                 'Delete', 'thread_delete',

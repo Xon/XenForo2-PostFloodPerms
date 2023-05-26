@@ -1,0 +1,6 @@
+{
+    "from_class": "NF\\Tickets\\Pub\\Controller\\Ticket",
+    "to_class": "SV\\PostFloodPerms\\NF\\Tickets\\Pub\\Controller\\Ticket",
+    "execute_order": 6800,
+    "active": true
+}

@@ -2,6 +2,8 @@
 
 Provides user group permissions for the following post rate limiting options:
 
+Recommend [Redis flood check](https://xenforo.com/community/resources/redis-flood-check.5564/) for when permission-based flood limits are longer than the 30 seconds.
+
 Thread/Post Permissions;
 - New Thread - Enable Per node rate limiting
 - New Thread - Per node post rate limiting - delay between new threads in seconds

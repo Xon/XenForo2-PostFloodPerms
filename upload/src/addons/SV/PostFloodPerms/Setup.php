@@ -9,11 +9,6 @@ use XF\AddOn\StepRunnerUninstallTrait;
 use XF\AddOn\StepRunnerUpgradeTrait;
 use XF\Entity\User as UserEntity;
 
-/**
- * Class Setup
- *
- * @package SV\PostFloodPerms
- */
 class Setup extends AbstractSetup
 {
     use InstallerHelper;

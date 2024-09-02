@@ -7,7 +7,7 @@ use XF\Entity\ConversationMaster;
 use XF\Mvc\ParameterBag;
 
 /**
- * Extends \XF\Pub\Controller\Conversation
+ * @extends \XF\Pub\Controller\Conversation
  */
 class Conversation extends XFCP_Conversation
 {

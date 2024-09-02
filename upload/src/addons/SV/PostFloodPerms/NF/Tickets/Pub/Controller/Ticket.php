@@ -7,7 +7,7 @@ use XF\Mvc\ParameterBag;
 use XF\Mvc\Reply\Exception as ExceptionAlias;
 
 /**
- * Extends \NF\Tickets\Pub\Controller\Ticket
+ * @extends \NF\Tickets\Pub\Controller\Ticket
  */
 class Ticket extends XFCP_Ticket
 {

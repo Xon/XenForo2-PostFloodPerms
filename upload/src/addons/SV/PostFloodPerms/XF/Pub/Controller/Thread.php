@@ -7,7 +7,7 @@ use XF\Mvc\ParameterBag;
 use XF\Mvc\Reply\Exception as ExceptionAlias;
 
 /**
- * Extends \XF\Pub\Controller\Thread
+ * @extends \XF\Pub\Controller\Thread
  */
 class Thread extends XFCP_Thread
 {

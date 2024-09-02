@@ -6,7 +6,7 @@ use SV\PostFloodPerms\ControllerPlugin\FloodCheck as FloodCheckPlugin;
 use XF\Mvc\ParameterBag;
 
 /**
- * Extends \XF\Pub\Controller\Post
+ * @extends \XF\Pub\Controller\Post
  */
 class Post extends XFCP_Post
 {

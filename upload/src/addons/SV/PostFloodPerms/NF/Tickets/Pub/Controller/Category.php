@@ -6,7 +6,7 @@ use SV\PostFloodPerms\ControllerPlugin\FloodCheck as FloodCheckPlugin;
 use XF\Mvc\Reply\Exception as ExceptionAlias;
 
 /**
- * Extends \NF\Tickets\Pub\Controller\Category
+ * @extends \NF\Tickets\Pub\Controller\Category
  */
 class Category extends XFCP_Category
 {

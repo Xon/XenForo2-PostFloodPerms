@@ -7,7 +7,7 @@ use XF\Mvc\ParameterBag;
 use XF\Mvc\Reply\Exception as ReplyException;
 
 /**
- * Extends \XF\Pub\Controller\Forum
+ * @extends \XF\Pub\Controller\Forum
  */
 class Forum extends XFCP_Forum
 {

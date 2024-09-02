@@ -47,6 +47,7 @@ class Forum extends XFCP_Forum
             $floodCheck = Helper::plugin($this, FloodCheckPlugin::class);
             $floodChecked = $floodCheck->assertNotFlooding('forum',
                 'Thread', 'thread_new',
+                '', 0,
                 'n', $this->svFloodCheckNodeId
             );
 

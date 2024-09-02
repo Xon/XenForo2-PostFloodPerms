@@ -3,6 +3,7 @@
 namespace SV\PostFloodPerms\NF\Tickets\Pub\Controller;
 
 use SV\PostFloodPerms\ControllerPlugin\FloodCheck as FloodCheckPlugin;
+use SV\StandardLib\Helper;
 use XF\Mvc\ParameterBag;
 use XF\Mvc\Reply\Exception as ExceptionAlias;
 
@@ -46,8 +47,7 @@ class Ticket extends XFCP_Ticket
     {
         if ($this->svDoFloodCheck && $action === 'nf_tickets_message')
         {
-            /** @var FloodCheckPlugin $floodCheck */
-            $floodCheck = $this->plugin('SV\PostFloodPerms:FloodCheck');
+            $floodCheck = Helper::plugin($this, FloodCheckPlugin::class);
             $floodChecked = $floodCheck->assertNotFlooding('ticket',
                 'Post', 'ticket_message',
                 'ticket', $this->svFloodTicket->ticket_id ?? 0

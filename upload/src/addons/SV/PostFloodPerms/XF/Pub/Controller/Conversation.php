@@ -3,6 +3,7 @@
 namespace SV\PostFloodPerms\XF\Pub\Controller;
 
 use SV\PostFloodPerms\ControllerPlugin\FloodCheck as FloodCheckPlugin;
+use SV\StandardLib\Helper;
 use XF\Entity\ConversationMaster;
 use XF\Mvc\ParameterBag;
 
@@ -26,8 +27,7 @@ class Conversation extends XFCP_Conversation
             {
                 return $this->noPermission($error);
             }
-            /** @var FloodCheckPlugin $floodCheck */
-            $floodCheck = $this->plugin('SV\PostFloodPerms:FloodCheck');
+            $floodCheck = Helper::plugin($this, FloodCheckPlugin::class);
             $floodCheck->assertNotFlooding('conversation',
                 'React', 'conversation_react',
                 'cr', $message->conversation_id
@@ -74,8 +74,7 @@ class Conversation extends XFCP_Conversation
     {
         if ($this->svDoFloodCheck && ($action === 'conversation' || $action === 'conversation_message'))
         {
-            /** @var FloodCheckPlugin $floodCheck */
-            $floodCheck = $this->plugin('SV\PostFloodPerms:FloodCheck');
+            $floodCheck = Helper::plugin($this, FloodCheckPlugin::class);
             $floodChecked = $floodCheck->assertNotFlooding('conversation',
                 'Post', 'conversation_post',
                 'c', $this->svFloodConversation->conversation_id ?? 0

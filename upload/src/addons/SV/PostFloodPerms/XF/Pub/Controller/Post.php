@@ -3,6 +3,7 @@
 namespace SV\PostFloodPerms\XF\Pub\Controller;
 
 use SV\PostFloodPerms\ControllerPlugin\FloodCheck as FloodCheckPlugin;
+use SV\StandardLib\Helper;
 use XF\Mvc\ParameterBag;
 
 /**
@@ -20,8 +21,7 @@ class Post extends XFCP_Post
             {
                 return $this->noPermission($error);
             }
-            /** @var FloodCheckPlugin $floodCheck */
-            $floodCheck = $this->plugin('SV\PostFloodPerms:FloodCheck');
+            $floodCheck = Helper::plugin($this, FloodCheckPlugin::class);
             $floodCheck->assertNotFlooding('forum',
                 'React', 'thread_react',
                 'tr', $post->thread_id,
@@ -43,8 +43,8 @@ class Post extends XFCP_Post
             {
                 return $this->noPermission($error);
             }
-            /** @var FloodCheckPlugin $floodCheck */
-            $floodCheck = $this->plugin('SV\PostFloodPerms:FloodCheck');
+
+            $floodCheck = Helper::plugin($this, FloodCheckPlugin::class);
             $floodCheck->assertNotFlooding('forum',
                 'Delete', 'thread_delete',
                 'td', $post->thread_id,

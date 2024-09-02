@@ -3,6 +3,7 @@
 namespace SV\PostFloodPerms\XF\Pub\Controller;
 
 use SV\PostFloodPerms\ControllerPlugin\FloodCheck as FloodCheckPlugin;
+use SV\StandardLib\Helper;
 use XF\Mvc\ParameterBag;
 use XF\Mvc\Reply\Exception as ExceptionAlias;
 
@@ -43,8 +44,7 @@ class Thread extends XFCP_Thread
     {
         if ($this->svFloodThread !== null && $action === 'post')
         {
-            /** @var FloodCheckPlugin $floodCheck */
-            $floodCheck = $this->plugin('SV\PostFloodPerms:FloodCheck');
+            $floodCheck = Helper::plugin($this, FloodCheckPlugin::class);
             $floodChecked = $floodCheck->assertNotFlooding('forum',
                 'Post', 'thread_post',
                 't', $this->svFloodThread->thread_id,

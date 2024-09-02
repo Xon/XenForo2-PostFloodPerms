@@ -10,17 +10,17 @@ use function strlen;
 class FloodCheck extends AbstractPlugin
 {
     /**
-     * @param string      $permGroup
-     * @param string      $type
-     * @param string|null $prefixGeneral
-     * @param string      $prefixItem
-     * @param int         $itemId
-     * @param string|null $prefixContainer
-     * @param int|null    $containerId
+     * @param string $permGroup
+     * @param string $type
+     * @param string $prefixGeneral
+     * @param string $prefixItem
+     * @param int    $itemId
+     * @param string $prefixContainer
+     * @param int    $containerId
      * @return bool
      * @throws ReplyException
      */
-    public function assertNotFlooding(string $permGroup, string $type, string $prefixGeneral, string $prefixItem, int $itemId,  string $prefixContainer = null, int $containerId = null): bool
+    public function assertNotFlooding(string $permGroup, string $type, string $prefixGeneral, string $prefixItem, int $itemId,  string $prefixContainer = '', int $containerId = 0): bool
     {
         $controller = $this->controller;
         if (!($controller instanceof AbstractController))
@@ -35,7 +35,7 @@ class FloodCheck extends AbstractPlugin
             return false;
         }
 
-        if ($itemId && strlen($prefixItem) !== 0 && $visitor->hasPermission($permGroup, 'svFlood' . $type . 'ItemOn'))
+        if ($itemId !== 0 && strlen($prefixItem) !== 0 && $visitor->hasPermission($permGroup, 'svFlood' . $type . 'ItemOn'))
         {
             $rateLimit = (int)$visitor->hasPermission($permGroup, 'svFlood' . $type . 'Item');
             if ($rateLimit < 0)
@@ -50,7 +50,7 @@ class FloodCheck extends AbstractPlugin
             }
         }
 
-        if ($containerId && strlen($prefixContainer) !== 0 && $visitor->hasPermission($permGroup, 'svFlood' . $type . 'ContainerOn'))
+        if ($containerId !== 0 && strlen($prefixContainer) !== 0 && $visitor->hasPermission($permGroup, 'svFlood' . $type . 'ContainerOn'))
         {
             $rateLimit = (int)$visitor->hasPermission($permGroup, 'svFlood' . $type . 'Container');
             if ($rateLimit < 0)

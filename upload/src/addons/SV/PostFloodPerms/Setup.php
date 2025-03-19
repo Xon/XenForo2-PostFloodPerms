@@ -20,6 +20,7 @@ class Setup extends AbstractSetup
     {
         $this->applyGlobalPermissionIntForGroup('forum', 'svFloodReactGeneral', 1, UserEntity::GROUP_REG);
         $this->applyGlobalPermissionIntForGroup('conversation', 'svFloodReactGeneral', 1, UserEntity::GROUP_REG);
+        $this->applyGlobalPermissionIntForGroup('profilePost', 'svFloodReactGeneral', 1, UserEntity::GROUP_REG);
     }
 
     public function upgrade2020000Step1(): void
@@ -46,5 +47,10 @@ class Setup extends AbstractSetup
     public function upgrade2020000Step2(): void
     {
         $this->applyGlobalPermissionIntForGroup('conversation', 'svFloodReactGeneral', 1, UserEntity::GROUP_REG);
+    }
+
+    public function upgrade1725242271Step1(): void
+    {
+        $this->applyGlobalPermissionIntForGroup('profilePost', 'svFloodReactGeneral', 1, UserEntity::GROUP_REG);
     }
 }

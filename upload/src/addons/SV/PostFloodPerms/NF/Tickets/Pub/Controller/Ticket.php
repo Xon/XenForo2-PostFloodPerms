@@ -2,6 +2,7 @@
 
 namespace SV\PostFloodPerms\NF\Tickets\Pub\Controller;
 
+use NF\Tickets\Entity\Ticket as TicketEntity;
 use SV\PostFloodPerms\ControllerPlugin\FloodCheck as FloodCheckPlugin;
 use SV\StandardLib\Helper;
 use XF\Mvc\ParameterBag;
@@ -14,7 +15,7 @@ class Ticket extends XFCP_Ticket
 {
     /** @var bool */
     protected $svDoFloodCheck = false;
-    /** @var \NF\Tickets\Entity\Ticket|null */
+    /** @var TicketEntity|null */
     protected $svFloodTicket = null;
 
     public function actionAddMessage(ParameterBag $params)

@@ -4,6 +4,7 @@ namespace SV\PostFloodPerms\XF\Pub\Controller;
 
 use SV\PostFloodPerms\ControllerPlugin\FloodCheck as FloodCheckPlugin;
 use SV\StandardLib\Helper;
+use XF\Entity\Thread as ThreadEntity;
 use XF\Mvc\ParameterBag;
 use XF\Mvc\Reply\Exception as ExceptionAlias;
 
@@ -12,7 +13,7 @@ use XF\Mvc\Reply\Exception as ExceptionAlias;
  */
 class Thread extends XFCP_Thread
 {
-    /** @var \XF\Entity\Thread|null */
+    /** @var ThreadEntity|null */
     protected $svFloodThread = null;
 
     public function actionAddReply(ParameterBag $params)

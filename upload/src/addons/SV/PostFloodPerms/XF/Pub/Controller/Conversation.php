@@ -4,7 +4,7 @@ namespace SV\PostFloodPerms\XF\Pub\Controller;
 
 use SV\PostFloodPerms\ControllerPlugin\FloodCheck as FloodCheckPlugin;
 use SV\StandardLib\Helper;
-use XF\Entity\ConversationMaster;
+use XF\Entity\ConversationMaster as ConversationMasterEntity;
 use XF\Mvc\ParameterBag;
 
 /**
@@ -12,7 +12,7 @@ use XF\Mvc\ParameterBag;
  */
 class Conversation extends XFCP_Conversation
 {
-    /** @var ConversationMaster|null */
+    /** @var ConversationMasterEntity|null */
     protected $svFloodConversation = null;
     /** @var bool */
     protected $svDoFloodCheck = false;

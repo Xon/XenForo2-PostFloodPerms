@@ -41,9 +41,9 @@ Profile Post permissions:
 - New Profile Post - Per profile rate limiting - delay between new profile post per user profile in seconds
 - New Profile Post - General rate limiting - delay between new profile post in seconds
 
-- Post Reply - Enable Per profile post limiting
-- Post Reply - Per profile post rate limiting - delay between profile post comments in seconds
-- Post Reply - General rate limiting - delay between profile post comment in seconds
+- Post comment - Enable Per profile post limiting
+- Post comment - Per profile post rate limiting - delay between profile post comments in seconds
+- Post comment - General rate limiting - delay between profile post comment in seconds
 
 - React - Per profile post rate limiting - delay between reacts in seconds
 - React - Enable Per profile post rate limiting

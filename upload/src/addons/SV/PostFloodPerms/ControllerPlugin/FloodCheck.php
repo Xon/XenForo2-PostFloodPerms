@@ -3,8 +3,12 @@
 namespace SV\PostFloodPerms\ControllerPlugin;
 
 use XF\ControllerPlugin\AbstractPlugin;
+use XF\Mvc\Reply\AbstractReply;
 use XF\Mvc\Reply\Exception as ReplyException;
 use XF\Pub\Controller\AbstractController;
+use function count;
+use function implode;
+use function round;
 use function strlen;
 
 class FloodCheck extends AbstractPlugin
@@ -82,5 +86,49 @@ class FloodCheck extends AbstractPlugin
         }
 
         return false;
+    }
+
+    protected $timeParts = [
+        24 * 60 * 60 => 'time.day',
+        60 * 60 => 'time.hour',
+        60 => 'time.minute',
+        1 => 'time.second',
+    ];
+
+    public function responseFlooding(int $floodSeconds): AbstractReply
+    {
+        $timeFragments = [];
+        foreach ($this->timeParts as $threshold => $phrase)
+        {
+            if ($floodSeconds < $threshold)
+            {
+                continue;
+            }
+
+            $part = (int)($floodSeconds / $threshold);
+            if ($part === 0)
+            {
+                continue;
+            }
+            $floodSeconds -= $part * $threshold;
+
+            $timeFragments[] = \XF::phrase($phrase . ($part === 1 ? '' : 's'), [
+                'count' => $part,
+            ]);
+
+            if (count($timeFragments) >= 2)
+            {
+                break;
+            }
+        }
+
+        if (count($timeFragments) === 0)
+        {
+            return $this->error(\XF::phrase('must_wait_x_seconds_before_performing_this_action', ['count' => $floodSeconds]));
+        }
+
+        return $this->error(\XF::phrase('svPostFloodPerms_must_wait_x_before_performing_this_action', [
+            'time' => implode(', ', $timeFragments),
+        ]));
     }
 }

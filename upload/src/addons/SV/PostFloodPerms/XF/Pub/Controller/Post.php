@@ -54,4 +54,9 @@ class Post extends XFCP_Post
 
         return parent::actionDelete($params);
     }
+
+    public function responseFlooding($floodSeconds)
+    {
+        return Helper::plugin($this, FloodCheckPlugin::class)->responseFlooding($floodSeconds);
+    }
 }

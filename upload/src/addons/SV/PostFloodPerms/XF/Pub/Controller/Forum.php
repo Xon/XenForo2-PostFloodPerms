@@ -58,4 +58,9 @@ class Forum extends XFCP_Forum
         }
         parent::assertNotFlooding($action, $floodingLimit);
     }
+
+    public function responseFlooding($floodSeconds)
+    {
+        return Helper::plugin($this, FloodCheckPlugin::class)->responseFlooding($floodSeconds);
+    }
 }

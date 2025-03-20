@@ -1,0 +1,1 @@
+You must wait at least {time} before performing this action.

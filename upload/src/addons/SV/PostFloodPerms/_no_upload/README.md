@@ -2,7 +2,7 @@
 
 Provides user group permissions for the following post rate limiting options:
 
-Recommend [Redis flood check](https://xenforo.com/community/resources/redis-flood-check.5564/) for when permission-based flood limits are longer than the 30 seconds.
+Recommend [Redis flood check](https://xenforo.com/community/resources/redis-flood-check.5564/) for when permission-based flood limits are longer than the ~30 seconds.
 
 Thread/Post Permissions;
 - New Thread - Enable Per node rate limiting
@@ -34,6 +34,15 @@ Conversation Permissions;
 
 - React - Per conversation rate limiting - delay between reacts in seconds
 - React - Enable Per conversation rate limiting
+- React - General rate limiting - delay between reacts in seconds
+
+Profile Post permissions:
+- Post Reply - Enable Per profile post limiting
+- Post Reply - Per profile post rate limiting - delay between profile post comments in seconds
+- Post Reply - General rate limiting - delay between profile post comments (including new profile post!) in seconds
+
+- React - Per profile post rate limiting - delay between reacts in seconds
+- React - Enable Per profile post rate limiting
 - React - General rate limiting - delay between reacts in seconds
 
 NixFifty's Ticket Permissions;

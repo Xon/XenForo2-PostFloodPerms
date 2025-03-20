@@ -36,6 +36,15 @@ Conversation Permissions;
 - React - Enable Per conversation rate limiting
 - React - General rate limiting - delay between reacts in seconds
 
+Profile Post permissions:
+- Post Reply - Enable Per profile post limiting
+- Post Reply - Per profile post rate limiting - delay between profile post comments in seconds
+- Post Reply - General rate limiting - delay between profile post comments (including new profile post!) in seconds
+
+- React - Per profile post rate limiting - delay between reacts in seconds
+- React - Enable Per profile post rate limiting
+- React - General rate limiting - delay between reacts in seconds
+
 NixFifty's Ticket Permissions;
 - Post Reply - Enable Per ticket rate limiting
 - Post Reply - Per ticket rate limiting - delay between ticket messages in seconds

@@ -49,7 +49,7 @@ class ProfilePost extends XFCP_ProfilePost
             $floodCheck = Helper::plugin($this, FloodCheckPlugin::class);
             $floodCheck->assertNotFlooding('profilePost',
                 'React', 'profile_react',
-                'ppr', $this->svFloodProfilePost->profile_user_id
+                'ppr', $profilePost->profile_user_id
             );
         }
 
@@ -69,7 +69,7 @@ class ProfilePost extends XFCP_ProfilePost
             $floodCheck = Helper::plugin($this, FloodCheckPlugin::class);
             $floodCheck->assertNotFlooding('profilePost',
                 'React', 'profile_react',
-                'ppr', $this->svFloodProfilePost->profile_user_id
+                'ppr', $comment->ProfilePost->profile_user_id
             );
         }
 

@@ -13,6 +13,8 @@ use XF\Mvc\Reply\Exception as ExceptionAlias;
  */
 class ProfilePost extends XFCP_ProfilePost
 {
+    /** @var bool */
+    protected $svDoFloodCheck = false;
     /** @var ProfilePostEntity|null */
     protected $svFloodProfilePost = null;
 
@@ -47,7 +49,7 @@ class ProfilePost extends XFCP_ProfilePost
             $floodCheck = Helper::plugin($this, FloodCheckPlugin::class);
             $floodCheck->assertNotFlooding('profilePost',
                 'React', 'profile_react',
-                'pr', $profilePost->profile_user_id
+                'ppr', $this->svFloodProfilePost->profile_user_id
             );
         }
 
@@ -67,7 +69,7 @@ class ProfilePost extends XFCP_ProfilePost
             $floodCheck = Helper::plugin($this, FloodCheckPlugin::class);
             $floodCheck->assertNotFlooding('profilePost',
                 'React', 'profile_react',
-                'pr', $comment->ProfilePost->profile_user_id
+                'ppr', $this->svFloodProfilePost->profile_user_id
             );
         }
 
@@ -87,6 +89,7 @@ class ProfilePost extends XFCP_ProfilePost
             $floodCheck = Helper::plugin($this, FloodCheckPlugin::class);
             $floodChecked = $floodCheck->assertNotFlooding('profilePost',
                 'Post', 'profile_post',
+                'ppc', $this->svFloodProfilePost->profile_post_id,
                 'pp', $this->svFloodProfilePost->profile_user_id
             );
 

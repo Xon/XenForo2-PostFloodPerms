@@ -4,7 +4,6 @@ namespace SV\PostFloodPerms\XF\Pub\Controller;
 
 use SV\PostFloodPerms\ControllerPlugin\FloodCheck as FloodCheckPlugin;
 use SV\StandardLib\Helper;
-use XF\Entity\ProfilePost as ProfilePostEntity;
 use XF\Mvc\ParameterBag;
 use XF\Mvc\Reply\Exception as ExceptionAlias;
 
@@ -42,12 +41,13 @@ class Member extends XFCP_Member
      */
     public function assertNotFlooding($action, $floodingLimit = null)
     {
-        if ($this->svFloodCheckUserId !== 0 && $action === 'post')
+        if ($action === 'post')
         {
             $floodCheck = Helper::plugin($this, FloodCheckPlugin::class);
             $floodChecked = $floodCheck->assertNotFlooding('profilePost',
-                'Post', 'profile_post',
-                'pp', $this->svFloodCheckUserId
+                'Profile', 'profile_post',
+                'pp', 0,
+                'ppn', $this->svFloodCheckUserId
             );
 
             if ($floodChecked)

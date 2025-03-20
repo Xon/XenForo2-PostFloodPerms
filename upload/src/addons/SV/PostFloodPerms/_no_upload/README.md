@@ -37,9 +37,13 @@ Conversation Permissions;
 - React - General rate limiting - delay between reacts in seconds
 
 Profile Post permissions:
+- New Profile Post - Enable Per profile rate limiting
+- New Profile Post - Per profile rate limiting - delay between new profile post per user profile in seconds
+- New Profile Post - General rate limiting - delay between new profile post in seconds
+
 - Post Reply - Enable Per profile post limiting
 - Post Reply - Per profile post rate limiting - delay between profile post comments in seconds
-- Post Reply - General rate limiting - delay between profile post comments (including new profile post!) in seconds
+- Post Reply - General rate limiting - delay between profile post comment in seconds
 
 - React - Per profile post rate limiting - delay between reacts in seconds
 - React - Enable Per profile post rate limiting

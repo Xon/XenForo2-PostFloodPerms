@@ -59,7 +59,7 @@ class Thread extends XFCP_Thread
         }
         parent::assertNotFlooding($action, $floodingLimit);
     }
-
+    /** @noinspection PhpMissingParentCallCommonInspection */
     public function responseFlooding($floodSeconds)
     {
         return Helper::plugin($this, FloodCheckPlugin::class)->responseFlooding($floodSeconds);

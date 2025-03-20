@@ -55,6 +55,7 @@ class Post extends XFCP_Post
         return parent::actionDelete($params);
     }
 
+    /** @noinspection PhpMissingParentCallCommonInspection */
     public function responseFlooding($floodSeconds)
     {
         return Helper::plugin($this, FloodCheckPlugin::class)->responseFlooding($floodSeconds);

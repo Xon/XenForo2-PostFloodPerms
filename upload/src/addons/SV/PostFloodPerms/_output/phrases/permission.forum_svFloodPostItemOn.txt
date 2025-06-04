@@ -1,1 +1,1 @@
-Post Reply - Enable Per Thread Rate Limit
+Post Reply - Enable per thread rate limiting

@@ -1,1 +1,1 @@
-React - Per Profile Post Rate Limit
+React - Per profile post rate limiting

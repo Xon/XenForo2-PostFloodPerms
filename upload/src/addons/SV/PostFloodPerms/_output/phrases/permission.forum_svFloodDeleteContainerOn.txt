@@ -1,1 +1,1 @@
-Delete Post - Enable Per Node Rate Limit
+Delete Post - Enable per node rate limiting

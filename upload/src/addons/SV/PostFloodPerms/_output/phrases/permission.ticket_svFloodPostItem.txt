@@ -1,1 +1,1 @@
-Post Reply - Per Ticket Rate Limit
+Post Reply - Per ticket rate limiting

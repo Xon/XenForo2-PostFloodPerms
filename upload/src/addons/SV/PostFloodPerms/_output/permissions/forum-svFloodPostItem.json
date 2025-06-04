@@ -1,6 +1,6 @@
 {
     "permission_type": "integer",
     "interface_group_id": "svForumRateLimiting",
-    "display_order": 231,
+    "display_order": 210,
     "depend_permission_id": "svFloodPostItemOn"
 }

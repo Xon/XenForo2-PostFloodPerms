@@ -1,6 +1,6 @@
 {
     "permission_type": "integer",
     "interface_group_id": "svForumRateLimiting",
-    "display_order": 200,
+    "display_order": 250,
     "depend_permission_id": "postReply"
 }

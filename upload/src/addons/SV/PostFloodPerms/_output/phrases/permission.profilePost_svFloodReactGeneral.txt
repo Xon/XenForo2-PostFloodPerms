@@ -1,1 +1,1 @@
-React - General Rate Limit
+React - General rate limiting

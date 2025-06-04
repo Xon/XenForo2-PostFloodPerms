@@ -1,1 +1,1 @@
-React - Enable Per Conversation Rate Limit
+React - Enable per conversation rate limiting

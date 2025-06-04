@@ -1,6 +1,6 @@
 {
     "permission_type": "integer",
     "interface_group_id": "svForumRateLimiting",
-    "display_order": 331,
+    "display_order": 310,
     "depend_permission_id": "svFloodDeleteItemOn"
 }

@@ -1,6 +1,6 @@
 {
     "permission_type": "flag",
     "interface_group_id": "svConversationRateLimiting",
-    "display_order": 50,
+    "display_order": 40,
     "depend_permission_id": "canReply"
 }

@@ -1,6 +1,6 @@
 {
     "permission_type": "integer",
     "interface_group_id": "svProfilePostRateLimiting",
-    "display_order": 30,
+    "display_order": 20,
     "depend_permission_id": "svFloodReactItemOn"
 }

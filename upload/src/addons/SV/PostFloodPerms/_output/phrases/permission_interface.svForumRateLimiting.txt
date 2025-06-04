@@ -1,1 +1,1 @@
-Forum Rate Limiting
+Forum rate limiting

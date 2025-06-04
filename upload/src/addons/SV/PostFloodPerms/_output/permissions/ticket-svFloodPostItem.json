@@ -1,6 +1,6 @@
 {
     "permission_type": "integer",
     "interface_group_id": "svTicketRateLimiting",
-    "display_order": 80,
+    "display_order": 20,
     "depend_permission_id": "svFloodPostItemOn"
 }

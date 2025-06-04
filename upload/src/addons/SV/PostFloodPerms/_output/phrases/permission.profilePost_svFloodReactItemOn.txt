@@ -1,1 +1,1 @@
-React - Enable Per Profile Post Rate Limit
+React - Enable per profile post rate limiting

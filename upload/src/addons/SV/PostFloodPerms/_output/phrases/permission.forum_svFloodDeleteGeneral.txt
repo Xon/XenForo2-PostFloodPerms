@@ -1,1 +1,1 @@
-Delete Post - General Rate Limit
+Delete Post - General rate limiting

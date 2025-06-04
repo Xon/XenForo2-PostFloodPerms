@@ -1,1 +1,1 @@
-Delete Post - Per Thread Rate Limit
+Delete Post - Per thread rate limiting

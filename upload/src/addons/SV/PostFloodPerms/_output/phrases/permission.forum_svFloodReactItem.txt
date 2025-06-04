@@ -1,1 +1,1 @@
-React - Per Thread Rate Limit
+React - Per thread rate limiting

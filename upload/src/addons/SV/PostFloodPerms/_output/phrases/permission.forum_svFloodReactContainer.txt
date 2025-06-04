@@ -1,1 +1,1 @@
-React - Per Node Rate Limit
+React - Per node rate limiting

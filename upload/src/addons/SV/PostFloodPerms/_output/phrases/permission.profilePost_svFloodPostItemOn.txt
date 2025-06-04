@@ -1,1 +1,1 @@
-Post Comment - Enable Per Profile Post Rate Limit
+Post Comment - Enable per profile post rate limiting

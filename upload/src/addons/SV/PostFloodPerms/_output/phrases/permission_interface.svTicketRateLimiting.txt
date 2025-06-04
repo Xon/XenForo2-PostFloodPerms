@@ -1,1 +1,1 @@
-Ticket Rate Limiting
+Ticket rate limiting

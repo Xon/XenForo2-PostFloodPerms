@@ -1,1 +1,1 @@
-Delete Post - Enable Per Thread Rate Limit
+Delete Post - Enable per thread rate limiting

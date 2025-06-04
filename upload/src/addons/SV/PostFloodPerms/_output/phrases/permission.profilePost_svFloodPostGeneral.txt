@@ -1,1 +1,1 @@
-Post Comment - General Rate Limit
+Post Comment - General rate limiting

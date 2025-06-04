@@ -52,6 +52,8 @@ Profile Post permissions:
 NixFifty's Ticket Permissions;
 - Post Reply - Enable Per ticket rate limiting
 - Post Reply - Per ticket rate limiting - delay between ticket messages in seconds
+- Post Reply - Enable per ticket category rate limiting
+- Post Reply - Per ticket category rate limiting - delay between ticket messages in seconds
 - Post Reply - General rate limiting - delay between ticket messages (including new tickets!) in seconds
 
 This permits the posting/react rate to be managed per node, and per user group. The number is the delay in seconds between posts.

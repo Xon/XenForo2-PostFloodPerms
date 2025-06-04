@@ -46,12 +46,14 @@ class Ticket extends XFCP_Ticket
      */
     public function assertNotFlooding($action, $floodingLimit = null)
     {
-        if ($this->svDoFloodCheck && $action === 'nf_tickets_message')
+        if ($this->svDoFloodCheck && $this->svFloodTicket !== null && $action === 'nf_tickets_message')
         {
             $floodCheck = Helper::plugin($this, FloodCheckPlugin::class);
             $floodChecked = $floodCheck->assertNotFlooding('ticket',
                 'Post', 'ticket_message',
-                'ticket', $this->svFloodTicket->ticket_id ?? 0
+                'ticket', $this->svFloodTicket->ticket_id,
+                'ticketCat', $this->svFloodTicket->ticket_category_id,
+                'nf_tickets_category'
             );
 
             if ($floodChecked)

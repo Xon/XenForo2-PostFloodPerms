@@ -25,7 +25,8 @@ class Post extends XFCP_Post
             $floodCheck->assertNotFlooding('forum',
                 'React', 'thread_react',
                 'tr', $post->thread_id,
-                'nr', $post->Thread->node_id
+                'nr', $post->Thread->node_id,
+                'node'
             );
         }
 
@@ -48,7 +49,8 @@ class Post extends XFCP_Post
             $floodCheck->assertNotFlooding('forum',
                 'Delete', 'thread_delete',
                 'td', $post->thread_id,
-                'nd', $post->Thread->node_id
+                'nd', $post->Thread->node_id,
+                'node'
             );
         }
 

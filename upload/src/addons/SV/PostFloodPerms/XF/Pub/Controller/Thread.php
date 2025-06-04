@@ -49,7 +49,8 @@ class Thread extends XFCP_Thread
             $floodChecked = $floodCheck->assertNotFlooding('forum',
                 'Post', 'thread_post',
                 't', $this->svFloodThread->thread_id,
-                'n', $this->svFloodThread->node_id
+                'n', $this->svFloodThread->node_id,
+                'node'
             );
 
             if ($floodChecked)

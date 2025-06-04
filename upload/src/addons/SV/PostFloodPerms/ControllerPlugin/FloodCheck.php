@@ -24,7 +24,7 @@ class FloodCheck extends AbstractPlugin
      * @return bool
      * @throws ReplyException
      */
-    public function assertNotFlooding(string $permGroup, string $type, string $prefixGeneral, string $prefixItem, int $itemId,  string $prefixContainer = '', int $containerId = 0): bool
+    public function assertNotFlooding(string $permGroup, string $type, string $prefixGeneral, string $prefixItem, int $itemId,  string $prefixContainer = '', int $containerId = 0, string $permissionContentType = ''): bool
     {
         $controller = $this->controller;
         if (!($controller instanceof AbstractController))
@@ -39,9 +39,22 @@ class FloodCheck extends AbstractPlugin
             return false;
         }
 
-        if ($itemId !== 0 && strlen($prefixItem) !== 0 && $visitor->hasPermission($permGroup, 'svFlood' . $type . 'ItemOn'))
+        if ($permissionContentType !== '' && $containerId !== 0)
         {
-            $rateLimit = (int)$visitor->hasPermission($permGroup, 'svFlood' . $type . 'Item');
+            $permCheck = function (string $permission) use ($visitor, $permissionContentType, $containerId) {
+                return $visitor->hasContentPermission($permissionContentType, $containerId, $permission);
+            };
+        }
+        else
+        {
+            $permCheck = function (string $permission) use ($visitor, $permGroup) {
+                return $visitor->hasPermission($permGroup, $permission);
+            };
+        }
+
+        if ($itemId !== 0 && strlen($prefixItem) !== 0 && $permCheck('svFlood' . $type . 'ItemOn'))
+        {
+            $rateLimit = (int)$permCheck('svFlood' . $type . 'Item');
             if ($rateLimit < 0)
             {
                 return true;
@@ -54,9 +67,9 @@ class FloodCheck extends AbstractPlugin
             }
         }
 
-        if ($containerId !== 0 && strlen($prefixContainer) !== 0 && $visitor->hasPermission($permGroup, 'svFlood' . $type . 'ContainerOn'))
+        if ($containerId !== 0 && strlen($prefixContainer) !== 0 && $permCheck('svFlood' . $type . 'ContainerOn'))
         {
-            $rateLimit = (int)$visitor->hasPermission($permGroup, 'svFlood' . $type . 'Container');
+            $rateLimit = (int)$permCheck('svFlood' . $type . 'Container');
             if ($rateLimit < 0)
             {
                 return true;
@@ -71,7 +84,7 @@ class FloodCheck extends AbstractPlugin
 
         if (strlen($prefixGeneral) !== 0)
         {
-            $rateLimit = (int)$visitor->hasPermission($permGroup, 'svFlood' . $type . 'General');
+            $rateLimit = (int)$permCheck('svFlood' . $type . 'General');
             if ($rateLimit < 0)
             {
                 return true;
